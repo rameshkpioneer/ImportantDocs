@@ -4,7 +4,15 @@ Configuring ubuntu in Virtual Box --- https://www.osboxes.org/guide/
 https://www.psychocats.net/ubuntu/virtualbox
 
 Sharing Folders from another Machine to ubuntu 
-https://unix.stackexchange.com/questions/105430/mounting-another-vms-vdi-in-virtualbox
+https://www.howtogeek.com/howto/2845/install-guest-additions-to-windows-and-linux-vms-in-virtualbox/    -- installing guest addition
+https://unix.stackexchange.com/questions/105430/mounting-another-vms-vdi-in-virtualbox    
+https://www.howtogeek.com/187703/how-to-access-folders-on-your-host-machine-from-an-ubuntu-virtual-machine-in-virtualbox/
 
 Mounti or Attaching VDI 
-https://unix.stackexchange.com/questions/105430/mounting-another-vms-vdi-in-virtualbox
+https://unix.stackexchange.com/questions/105430/mounting-another-vms-vdi-in-virtualbox 
+
+
+
+
+installing Java on Ubuntu
+https://github.com/chrishantha/install-java   
