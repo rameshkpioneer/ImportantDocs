@@ -1,0 +1,52 @@
+git config --global user.name "Your Name"
+git config --global user.email "youremail@domain.com" 
+Mkdir directory name 
+Git commit  -m "First Commit" -- Comments should be in quotes 
+Git remote add origin  URL of git to add remote  repository to local folder
+git push -u origin master --- Enter 
+Username first and enter 
+Password
+
+Nano is command for creating a new text file from UBUTNU command
+Example nano abc.txt
+Ctrl 0 to save and Ctrl X to exit 
+
+
+Adding file to git 
+Git  add filename
+Git commit  -m "Added filename" filename
+Git push - origin  master
+
+
+Git status command is used for check  how many files are  added  to git , newly added files , changed files  etc
+
+.gitignore file is add filename which youwant to ignore to commit to github  
+Git add -A If you want add all the file to staging area …Means added to git but not yet pushed to github
+Git reset filename -- it will remove from the   staging  area 
+Git reset it will remove everything from staging area
+Git clone  remote repository URL 
+Viewing information about remote repository 
+Git remote -v
+Git branch -a
+Git  diff-- it will shows the changes that I have made to the code
+	-  minus inidcates what I removed 
+   +  indicates what I added to 
+ git   add  -A
+  git  status 
+  git  commit
+ git pull origin master
+  git push origin master
+  git branch  -- * marks represents currently we are working branch
+  git checkout  branchname  -- it will check out the project from  branch 
+ git push -u origin branch name
+ Merging branch to master 
+  git checkout master
+  git pull origin master
+ git branch --merged
+ git merge branchname
+ git push origin master	
+	
+
+
+
+From <https://www.youtube.com/watch?v=SwK2dPFXhpU> 
