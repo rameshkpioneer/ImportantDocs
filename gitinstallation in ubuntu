@@ -1,1 +1,28 @@
 https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-18-04-quickstart
+
+Step 1:
+sudo apt update
+
+
+Step 2:
+sudo apt install git
+
+Step 3:
+git --version
+
+Step 4 — Set Up Git
+Now that you have Git installed and to prevent warnings, you should configure it with your information.
+
+git config --global user.name "Your Name"
+git config --global user.email "youremail@domain.com"
+
+If you need to edit this file, you can use a text editor such as nano:
+nano ~/.gitconfig
+
+
+
+~/.gitconfig contents
+[user]
+  name = Your Name
+  email = youremail@domain.com
+
