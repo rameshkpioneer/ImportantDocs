@@ -1,0 +1,98 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+
+const mongoose = require('mongoose');
+const lodashUtility = require('lodash');
+const ejs = require('ejs');
+
+const app = express();
+app.set('view engine', 'ejs');
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(express.static("public"));
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
+app.listen(port, function() {
+  console.log("Listening on port numer 3000");
+})
+-------------------------------
+const url = "mongodb+srv://ram_mongoDB:XSDYAnbxt6JLsnh@cluster0.x7sky.mongodb.net/todoListDB?retryWrites=true&w=majority";
+mongoose.connect(url,{
+  useNewUrlParser: true
+})
+const itemsSchema = new mongoose.Schema({
+  name: String
+});
+
+const listSchema = new mongoose.Schema({
+  name:String,
+  items:[itemsSchema]
+})
+
+const Item = mongoose.model('Item', itemsSchema);
+const List = mongoose.model('List', listSchema);
+---------------------
+Mongoose post example saving  embedded doc
+
+app.post("/", function(req, res) {
+
+  const item = lodashUtility.upperFirst(req.body.newItem);
+  const customeListName = req.body.list;
+  const postItem = new Item({
+    name: item
+  });
+  if (customeListName === 'Today') {
+    postItem.save();
+    res.redirect("/");
+  } else {
+  //  console.log("Else Post " , customeListName);
+    List.findOne({
+        name: customeListName
+      }, function(err, foundlist) {
+        foundlist.items.push(postItem);
+        foundlist.save();
+        res.redirect("/" +customeListName);
+        });
+    }
+});
+-----------------------
+Mongoose saving simple doc
+
+app.post("/compose", function(req, res){
+     const post1 = new Post({
+     title: req.body.postTitle,
+     content: req.body.postBody
+   })
+   post1.save();
+
+  res.redirect("/");
+});
+------------------------
+
+Deleting embedded doc examples
+app.post("/delete",function(req,res){
+  const itemToBeRemoved = req.body.itemCheckBox;
+  const listName = req.body.listname;
+  //console.log("Item to be deleted ",itemToBeRemoved);
+  if( listName == 'Today'){
+    Item.findByIdAndRemove(itemToBeRemoved,function(err){
+      if(!err){
+        console.log("Succesfully removed item ");
+        res.redirect("/");
+      }
+    });
+  }else{
+    List.findOneAndUpdate({name :listName },{$pull:{items:{_id:itemToBeRemoved}}},function(err,foundlist){
+      if(!err){
+        res.redirect("/"+listName);
+      }
+    })
+  }
+})
